@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  
+  <!-- Favicons -->
+  <link rel="icon shortcut" type="image/ico" href="/PGambler.svg">
+  <link rel="icon" sizes="192x192" href="/PGambler.svg">
+  <link rel="apple-touch-icon" href="/PGambler.svg">
+
+  <!-- Meta & Info -->
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#fff">
+  <meta name="author" content="PGambler">
+  
+  <meta name="keywords" content="hexo, blog,随记">
+
+  <!--iOS -->
+  <meta name="apple-mobile-web-app-title" content="PGambler">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="480">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- The Open Graph protocol -->
+  <meta property="og:url" content="https://github.com/PGambler/PGambler.github.io">
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="test - PGambler | PGambler">
+  <meta property="og:image" content="/PGambler.svg" />
+  
+  
+  <meta property="og:article:tag" content="随记">
+  
+  <title>PGambler</title>
+  
+<link rel="stylesheet" href="/css/index.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.4.x/dist/typography.min.css"
+  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://kit.fontawesome.com/880bc416b5.js" crossorigin="anonymous"></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+  <body>
+    <div class="flex flex-col items-center">
+      <div style="flex: 1 1 3rem;">
+  <div class="fixed left-0 top-0 flex justify-between w-full p-2 bg-gray-800 text-white">
+    <div class="grid grid-cols-1 gap-2">
+      <a class="the-btn" href="/" title="首页">
+        <i class="fas fa-home"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-4 gap-2">
+      <div class="the-btn" title="搜索">
+        <i class="fas fa-search"></i>
+      </div>
+      <div id="search" class="the-btn" title="关于我">
+        <i class="fas fa-meh-blank"></i>
+      </div>
+      <div class="the-btn" title="gitbub">
+        <i class="fab fa-github"></i>
+      </div>
+      <div id="theme" class="the-btn" title="主题">
+        <i class="fas fa-sun"></i>
+      </div>
+    </div>
+  </div>
+</div>
+      <div id="container" class="container flex-auto" style="min-height: calc(100vh - 6rem);">
+         
+<div class="antialiased text-gray-900">
+  <div class="px-4 py-4 my-6 max-w-3xl mx-auto shadow-lg sm:px-6 sm:py-12 lg:max-w-4xl lg:py-16 lg:px-8 xl:max-w-6xl">
+    <div class="flex flex-col items-center mb-4 mx-auto border-b border-gray-500">
+      <span class="text-4xl break-all text-gray-500">springIOC相关注册注解及接口</span>
+      <span class="grid grid-cols-2 gap-x-2 py-4 text-sm text-gray-500">
+        <span class="flex items-center">
+          <span>浏览数：20K</span>
+        </span>
+        <span class="flex items-center">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="pl-1">2020-11-24</span>
+        </span>
+      </span>
+    </div>
+    <article class="prose prose-indigo prose-sm sm:prose lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+      <p>IOC作为spring的核心，有哪些相关的注解以及接口？</p>
+<span id="more"></span>
+<p>借助网上的一篇文章特此做一份自己记录</p>
+<blockquote>
+<p> <a target="_blank" rel="noopener" href="https://mrbird.cc/Spring-Bean-Regist.html">深入学习Spring组件注册</a></p>
+</blockquote>
+<ol>
+<li>@Bean<br>这是一个方法级别上的注解，主要用在@Configuration注解的类里，也可以在@component注解的类里<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class AppConfig &#123;</span><br><span class="line">    @Bean</span><br><span class="line">    public Demo demo() &#123;</span><br><span class="line">        return new Demo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>@ComponentScan<br>这是一个类级别上的注解，配合@Configuration注解一起使用。从定义扫描的路径（未指定即为当前注解类所在包）中找出标注@Controller、@Service、@Repository、@Component的类装配到spring容器中<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@ComponentScan(&quot;com.demo&quot;)</span><br><span class="line">public class AppConfig &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+excludeFilters来排除一些组件的扫描：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@ComponentScan(value=&quot;com.demo&quot;, excludeFilters = &#123;</span><br><span class="line">  @Filter(type = FilterType.ANNOTATION,classes = &#123;Controller.class, Repository.class&#125;),</span><br><span class="line">   @Filter(type = FilterType.ASSIGNABLE_TYPE,classes = &#123;Demo1.class, Demo2.class&#125;)</span><br><span class="line">&#125;)</span><br><span class="line">public class AppConfig &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+includeFilters的作用和excludeFilters相反，其指定的是哪些组件需要被扫描：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@ComponentScan(value=&quot;com.demo&quot;, includeFilters = &#123;</span><br><span class="line">  @Filter(type = FilterType.ANNOTATION, classes = Service.class)&#125;,</span><br><span class="line">  useDefaultFilters = false)</span><br><span class="line">&#125;)</span><br><span class="line">public class AppConfig &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>@Scope<br>组件的作用域，类与方法级别都可使用该注解。默认情况下IOC容器里面的组件均是单例（容器创建过程注入），可通过@Scope注解进行组件作用域配置：<br>1） singleton：单实例（默认）,在Spring IOC容器启动的时候会调用方法创建对象然后纳入到IOC容器中，以后每次获取都是直接从IOC容器中获取（map.get()）；<br>2）prototype：多实例，IOC容器启动的时候并不会去创建对象，而是在每次获取的时候才会去调用方法创建对象；<br>3）request：一个请求对应一个实例；<br>4）session：同一个会话对应一个实例；<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class WebConfig &#123;</span><br><span class="line">    @Bean</span><br><span class="line">    @Scope(&quot;prototype&quot;)</span><br><span class="line">    public User user() &#123;</span><br><span class="line">        return new User(&quot;mrbird&quot;, 18);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>@Lazy<br>懒加载是针对单例模式而言的，正如前面所说，IOC容器中的u组件默认是单例的，容器启动的时候会调用方法创建对象然后注入到IOC容器中。而当使用懒加载模式时，对象将不在容器启动过程中马上创建（除非使用），而是等到对象首次被调用时进行实例化注入容器并返回给调用方。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class WebConfig &#123;</span><br><span class="line">    @Bean</span><br><span class="line">    @Lazy</span><br><span class="line">    public User user() &#123;</span><br><span class="line">        return new User(&quot;mrbird&quot;, 18);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Conditional<br>条件注册注解，类与方法级别的注解，该注解可以指定组件注册的条件，当组件满足特定的条件后才注入IOC容器。该注解接受一个实现Condition接口的类型：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class MyCondition implements Condition &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) &#123;</span><br><span class="line">        String osName = context.getEnvironment().getProperty(&quot;os.name&quot;);</span><br><span class="line">        return osName != null &amp;&amp; osName.contains(&quot;Windows&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">class Demo &#123;</span><br><span class="line">    @Bean</span><br><span class="line">    @Conditional(MyCondition.class)</span><br><span class="line">    public User user() &#123;</span><br><span class="line">        return new User(&quot;mrbird&quot;, 18);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Profile<br>@Profile可以根据不同的环境变量来注册不同的组件<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1362768">Spring 中的@Profile 注解的作用是什么？</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">class AppConfig &#123;</span><br><span class="line">    @Bean(&quot;demo&quot;)</span><br><span class="line">    @Profile(&quot;java7&quot;)</span><br><span class="line">    public Demo demo1() &#123;</span><br><span class="line">        return new Demo(&quot;mrbird&quot;, &quot;java7&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    @Bean(&quot;demo&quot;)</span><br><span class="line">    @Profile(&quot;java8&quot;)</span><br><span class="line">    public Demo demo2() &#123;</span><br><span class="line">        return new Demo(&quot;mrbird&quot;, &quot;java8&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>@Import<br>到目前为止，我们可以使用包扫描和@Bean来实现组件注册。除此之外，我们还可以使用@Import来快速地往IOC容器中添加组件。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Hello &#123;</span><br><span class="line">&#125;</span><br><span class="line">@Configuration</span><br><span class="line">@Import(&#123;Hello.class&#125;)</span><br><span class="line">public class AppConfig &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>ImportSelector<br>通过@Import我们已经实现了组件的导入，如果需要一次性导入较多组件，我们可以使用ImportSelector来实现。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class MyImportSelector implements ImportSelector &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String[] selectImports(AnnotationMetadata importingClassMetadata) &#123;</span><br><span class="line">        return new String[]&#123;</span><br><span class="line">                &quot;cc.mrbird.demo.domain.Apple&quot;,</span><br><span class="line">                &quot;cc.mrbird.demo.domain.Banana&quot;,</span><br><span class="line">                &quot;cc.mrbird.demo.domain.Watermelon&quot;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Import(&#123;MyImportSelector.class&#125;)</span><br><span class="line">public class WebConfig &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>ImportBeanDefinitionRegistrar<br>除了上面两种往IOC容器导入组件的方法外，我们还可以使用ImportBeanDefinitionRegistrar来手动往IOC容器导入组件。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) &#123;</span><br><span class="line">        final String beanName = &quot;strawberry&quot;;</span><br><span class="line">        boolean contain = registry.containsBeanDefinition(beanName);</span><br><span class="line">        if (!contain) &#123;</span><br><span class="line">            RootBeanDefinition rootBeanDefinition = new RootBeanDefinition(Strawberry.class);</span><br><span class="line">            registry.registerBeanDefinition(beanName, rootBeanDefinition);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@Import(&#123;MyImportBeanDefinitionRegistrar.class&#125;)</span><br><span class="line">public class WebConfig &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>FactoryBean<br>Spring还提供了一个FactoryBean接口，我们可以通过实现该接口来注册组件，该接口包含了两个抽象方法和一个默认方法：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class CherryFactoryBean implements FactoryBean&lt;Cherry&gt; &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Cherry getObject() &#123;</span><br><span class="line">        return new Cherry();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">        return Cherry.class;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean isSingleton() &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Bean</span><br><span class="line">public CherryFactoryBean cherryFactoryBean() &#123;</span><br><span class="line">    return new CherryFactoryBean();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+以上有些是个人观点，如发现有误还望指出</li>
+</ol>
+<p>（完）</p>
+
+    </article>
+    <div class="grid grid-cols-2 gap-x-2 p-3 m-3 mx-auto border-t border-gray-500">
+      <span class="flex flex-col">
+         
+        <a class="flex items-center" href="/2021/09/11/59f908028298/">
+          <i class="fas fa-angle-left"></i>
+          <span class="pl-1">上一篇</span>
+        </a>
+        <a class="truncate" href="/2021/09/11/59f908028298/">test</a>
+         
+      </span>
+      <span class="w-full flex flex-col justify-self-end">
+         
+        <a class="flex justify-end items-center" href="/2020/11/24/3bb86e27f71c/">
+          <span class="pr-1">下一篇</span>
+          <i class="fas fa-angle-right"></i>
+        </a>
+        <a class="text-right truncate" href="/2020/11/24/3bb86e27f71c/">前后端分离vue+springboot所遇到的跨域问题</a>
+         
+      </span>
+    </div>
+  </div>
+  <div class="toc-wrap hidden text-xs sm:text-sm lg:text-base xl:text-lg">
+    <p class="p-3 pb-1 mb-2 border-b border-solid border-gray-800">目录</p>
+    
+  </div>
+</div> 
+      </div>
+      <div class="flex flex-col justify-center items-center w-full bg-gray-800 text-white text-xs" style="flex: 1 1 3rem;">
+  <div class="divide-x">
+    <span class="pr-1">本站浏览总访问量：100</span>
+    <span class="pl-1">本站访问人数：10</span>
+  </div>
+  <div class="divide-x">
+    <span class="pr-1">&copy;PGambler</span>
+    <span class="px-1">Powered by <a href="http://hexo.io" target="_blank" class="text-blue-400">Hexo</a></span>
+    <span class="pl-1">Theme - <a href="//github.com/Halyul/hexo-theme-mdui" target="_blank"  class="text-blue-400">PGambler</a></span>
+  </div>
+</div>
+    </div>
+  </body>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?94d58b73336d471470a480cea85af875";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+<script src="/js/main.bundle.js"></script>
+</html>

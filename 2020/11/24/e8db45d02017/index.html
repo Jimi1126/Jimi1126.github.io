@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  
+  <!-- Favicons -->
+  <link rel="icon shortcut" type="image/ico" href="/PGambler.svg">
+  <link rel="icon" sizes="192x192" href="/PGambler.svg">
+  <link rel="apple-touch-icon" href="/PGambler.svg">
+
+  <!-- Meta & Info -->
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#fff">
+  <meta name="author" content="PGambler">
+  
+  <meta name="keywords" content="hexo, blog,随记">
+
+  <!--iOS -->
+  <meta name="apple-mobile-web-app-title" content="PGambler">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="480">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- The Open Graph protocol -->
+  <meta property="og:url" content="https://github.com/PGambler/PGambler.github.io">
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="test - PGambler | PGambler">
+  <meta property="og:image" content="/PGambler.svg" />
+  
+  
+  <meta property="og:article:tag" content="随记">
+  
+  <title>PGambler</title>
+  
+<link rel="stylesheet" href="/css/index.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.4.x/dist/typography.min.css"
+  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://kit.fontawesome.com/880bc416b5.js" crossorigin="anonymous"></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+  <body>
+    <div class="flex flex-col items-center">
+      <div style="flex: 1 1 3rem;">
+  <div class="fixed left-0 top-0 flex justify-between w-full p-2 bg-gray-800 text-white">
+    <div class="grid grid-cols-1 gap-2">
+      <a class="the-btn" href="/" title="首页">
+        <i class="fas fa-home"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-4 gap-2">
+      <div class="the-btn" title="搜索">
+        <i class="fas fa-search"></i>
+      </div>
+      <div id="search" class="the-btn" title="关于我">
+        <i class="fas fa-meh-blank"></i>
+      </div>
+      <div class="the-btn" title="gitbub">
+        <i class="fab fa-github"></i>
+      </div>
+      <div id="theme" class="the-btn" title="主题">
+        <i class="fas fa-sun"></i>
+      </div>
+    </div>
+  </div>
+</div>
+      <div id="container" class="container flex-auto" style="min-height: calc(100vh - 6rem);">
+         
+<div class="antialiased text-gray-900">
+  <div class="px-4 py-4 my-6 max-w-3xl mx-auto shadow-lg sm:px-6 sm:py-12 lg:max-w-4xl lg:py-16 lg:px-8 xl:max-w-6xl">
+    <div class="flex flex-col items-center mb-4 mx-auto border-b border-gray-500">
+      <span class="text-4xl break-all text-gray-500">一个mongoDB的CRUD模块</span>
+      <span class="grid grid-cols-2 gap-x-2 py-4 text-sm text-gray-500">
+        <span class="flex items-center">
+          <span>浏览数：20K</span>
+        </span>
+        <span class="flex items-center">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="pl-1">2020-11-24</span>
+        </span>
+      </span>
+    </div>
+    <article class="prose prose-indigo prose-sm sm:prose lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+      <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本模块是针对mongoDB的CRUD操作进行封装的模块，你只需指定目标mongoDB的相关配置以及所操作的document，你将得到一个代理对象，为你提供mongoDB的相关操作，并支持日志记录.</p>
+<span id="more"></span>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><blockquote>
+<p>npm install –save handler4mongodb</p>
+</blockquote>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const MongoDao = require(&quot;handler4mongodb&quot;);</span><br><span class="line">const config = &#123;</span><br><span class="line">  &quot;mongodb&quot;: &#123;</span><br><span class="line">		&quot;username&quot;: &quot;test&quot;, //用户名</span><br><span class="line">		&quot;password&quot;: &quot;test&quot;, //密码</span><br><span class="line">		&quot;hostName&quot;: &quot;127.0.0.1&quot;,  //数据库地址</span><br><span class="line">		&quot;port&quot;: &quot;27017&quot;,  //端口</span><br><span class="line">		&quot;auth&quot;: &quot;authSource=admin&quot;, //认证</span><br><span class="line">		&quot;DB_OPTS&quot;: &#123;&quot;useNewUrlParser&quot;: true, &quot;useUnifiedTopology&quot;:true&#125; //连接参数</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">// 实例一个提供test库user表的操作代理对象</span><br><span class="line">const dao = new MongoDao(config.mongodb, &#123;test: [&quot;user&quot;]&#125;);</span><br><span class="line">// 调用方式 对象.库名.表名.操作</span><br><span class="line">dao.test.user.insert(&#123;name: &quot;test&quot;&#125;, (err)=&gt; &#123;&#125;);</span><br><span class="line">// 实例多个表操作代理对象</span><br><span class="line">const dao = new MongoDao(config.mongodb, &#123;test1: [&quot;user1&quot;, &quot;user2&quot;], test2: [&quot;user3&quot;]&#125;);</span><br><span class="line">// 调用方式 对象.库名.表名.操作</span><br><span class="line">dao.test1.user1.insert(&#123;name: &quot;test&quot;&#125;, (err)=&gt; &#123;&#125;);</span><br><span class="line">dao.test1.user2.insert(&#123;name: &quot;test&quot;&#125;, (err)=&gt; &#123;&#125;);</span><br><span class="line">dao.test2.user3.insert(&#123;name: &quot;test&quot;&#125;, (err)=&gt; &#123;&#125;);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>后续</p>
+<h1 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h1><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>版本</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2020/03/05</td>
+<td>1.0.1</td>
+<td>修复数据库会话提前关闭问题；CRUD改为批量操作；</td>
+</tr>
+<tr>
+<td>2020/01/13</td>
+<td>1.0.0</td>
+<td>新增</td>
+</tr>
+</tbody></table>
+<h1 id="免责声明"><a href="#免责声明" class="headerlink" title="免责声明"></a>免责声明</h1><p>本工具仅用于学习交流使用，禁止用于商业用途，使用本工具所造成的的后果由使用者承担！ 有疑问请 mail to: <a href="mailto:&#x78;&#102;&#113;&#x69;&#110;&#103;&#x5f;&#109;&#105;&#x64;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#111;&#109;">&#x78;&#102;&#113;&#x69;&#110;&#103;&#x5f;&#109;&#105;&#x64;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#111;&#109;</a></p>
+
+    </article>
+    <div class="grid grid-cols-2 gap-x-2 p-3 m-3 mx-auto border-t border-gray-500">
+      <span class="flex flex-col">
+         
+        <a class="flex items-center" href="/2020/11/24/f8afecf942d8/">
+          <i class="fas fa-angle-left"></i>
+          <span class="pl-1">上一篇</span>
+        </a>
+        <a class="truncate" href="/2020/11/24/f8afecf942d8/">字符转换大字符</a>
+         
+      </span>
+      <span class="w-full flex flex-col justify-self-end">
+         
+      </span>
+    </div>
+  </div>
+  <div class="toc-wrap hidden text-xs sm:text-sm lg:text-base xl:text-lg">
+    <p class="p-3 pb-1 mb-2 border-b border-solid border-gray-800">目录</p>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="toc-number">5.</span> <span class="toc-text">更新日志</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E"><span class="toc-number">6.</span> <span class="toc-text">免责声明</span></a></li></ol>
+  </div>
+</div> 
+      </div>
+      <div class="flex flex-col justify-center items-center w-full bg-gray-800 text-white text-xs" style="flex: 1 1 3rem;">
+  <div class="divide-x">
+    <span class="pr-1">本站浏览总访问量：100</span>
+    <span class="pl-1">本站访问人数：10</span>
+  </div>
+  <div class="divide-x">
+    <span class="pr-1">&copy;PGambler</span>
+    <span class="px-1">Powered by <a href="http://hexo.io" target="_blank" class="text-blue-400">Hexo</a></span>
+    <span class="pl-1">Theme - <a href="//github.com/Halyul/hexo-theme-mdui" target="_blank"  class="text-blue-400">PGambler</a></span>
+  </div>
+</div>
+    </div>
+  </body>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?94d58b73336d471470a480cea85af875";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+<script src="/js/main.bundle.js"></script>
+</html>

@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .the-btn {
+    @apply w-8 h-8 leading-8 text-center rounded-full transition duration-500 ease-in-out hover:bg-gray-600;
+  }
+  figure{
+    @apply overflow-x-auto;
+  }
+  article > p > a {
+    @apply break-all;
+  }
+  .toc-wrap {
+    @apply fixed flex flex-col w-64 max-h-96 p-3 top-24 right-12 bg-gray-200 rounded-lg overflow-x-auto;
+  }
+  .toc-child{
+    @apply pl-2;
+  }
+  .toc-link{
+    @apply block p-2 rounded break-all truncate cursor-pointer hover:bg-gray-400 transition duration-500;
+  }
+}
