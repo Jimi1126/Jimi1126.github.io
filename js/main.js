@@ -17,8 +17,31 @@ const methods = Object.freeze({
   search() {
     console.log('search')
   },
-  theme() {
-    console.log('theme')
+  theme(e) {
+    // 点击事件
+    if (e) {
+      if ($('html').hasClass('dark')) {
+        localStorage.theme = 'light'
+        $('html').addClass('light')
+        $('html').removeClass('dark')
+      } else {
+        localStorage.theme = 'dark'
+        $('html').addClass('dark')
+        $('html').removeClass('light')
+      }
+    } else {
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        localStorage.theme = 'dark'
+        $('html').addClass('dark')
+      } else {
+        localStorage.theme = 'light'
+        $('html').addClass('light')
+      }
+    }
   },
   toggleMenu(e) {
     if (!e.currentTarget) return
@@ -51,7 +74,7 @@ const methods = Object.freeze({
 
 const onMounted = () => {
   /* 事件绑定 */
-  $('#myUsage').length && new TypeIt('#myUsage').go()
+  $('#cool').length && new TypeIt('#cool').go()
   $('#back2top').on('click', state.elevator.elevate)
   $('#container').on(
     'scroll',
@@ -66,9 +89,9 @@ const onMounted = () => {
     }, 100)
   )
   // bar
-  ;['back', 'search'].forEach((id) => $('#' + id).on('click', methods[id]))
-  // menu
-  $('.menu-list>[menu]').on('click', methods.toggleMenu)
-  $('.menu-list [path]').on('click', methods.menuEvent)
+  ;['back', 'theme', 'search'].forEach((id) =>
+    $('#' + id).on('click', methods[id])
+  )
+  methods.theme()
 }
 $(document).ready(onMounted)

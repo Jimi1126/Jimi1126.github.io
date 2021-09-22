@@ -4,9 +4,9 @@
 <head>
   
   <!-- Favicons -->
-  <link rel="icon shortcut" type="image/ico" href="/image/PGambler.svg">
-  <link rel="icon" sizes="192x192" href="/image/PGambler.svg">
-  <link rel="apple-touch-icon" href="/image/PGambler.svg">
+  <link rel="icon shortcut" type="image/ico" href="/image/favicon.svg">
+  <link rel="icon" sizes="192x192" href="/image/favicon.svg">
+  <link rel="apple-touch-icon" href="/image/favicon.svg">
 
   <!-- Meta & Info -->
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -15,7 +15,7 @@
   <meta name="theme-color" content="#fff">
   <meta name="author" content="PGambler">
   
-  <meta name="keywords" content="hexo, blog,随记">
+  <meta name="keywords" content="hexo, blog">
 
   <!--iOS -->
   <meta name="apple-mobile-web-app-title" content="PGambler">
@@ -30,11 +30,9 @@
   <!-- The Open Graph protocol -->
   <meta property="og:url" content="https://github.com/PGambler/PGambler.github.io">
   <meta property="og:type" content="blog">
-  <meta property="og:title" content="test - PGambler | PGambler">
-  <meta property="og:image" content="/image/PGambler.svg" />
+  <meta property="og:title" content="categories - PGambler | PGambler">
+  <meta property="og:image" content="/image/favicon.svg" />
   
-  
-  <meta property="og:article:tag" content="随记">
   
   <title>PGambler</title>
   
@@ -51,7 +49,7 @@
   <body>
     <div class="flex flex-col items-center">
       <div style="flex: 1 1 3rem;">
-  <div class="fixed left-0 top-0 flex justify-between w-full p-2 bg-gray-800 text-white">
+  <div class="fixed left-0 top-0 flex justify-between w-full p-2 bg-gray-800 text-white z-50">
     <div class="grid grid-cols-1 gap-2">
       <a class="the-btn" href="/" title="首页">
         <i class="fas fa-home"></i>
@@ -59,15 +57,15 @@
     </div>
 
     <div class="grid grid-cols-4 gap-2">
-      <div class="the-btn" title="搜索">
+      <a id="search" class="the-btn" title="搜索">
         <i class="fas fa-search"></i>
-      </div>
-      <div id="search" class="the-btn" title="关于我">
+      </a>
+      <a class="the-btn" href="/about" title="关于">
         <i class="fas fa-meh-blank"></i>
-      </div>
-      <div class="the-btn" title="gitbub">
+      </a>
+      <a class="the-btn" href="//github.com/PGambler" target="_blank" title="gitbub">
         <i class="fab fa-github"></i>
-      </div>
+      </a>
       <div id="theme" class="the-btn" title="主题">
         <i class="fas fa-sun"></i>
       </div>
@@ -77,30 +75,30 @@
       <div id="container" class="container flex-auto" style="min-height: calc(100vh - 6rem);">
          
 <div class="flex flex-col justify-center items-center mx-4 py-12 border-b border-gray-500">
-  <img class="rounded-full w-48" src="/image/PGambler.svg" />
-  <p id="myUsage" class="p-3">每个认真生活的人，都值得被认真对待。</p>
+  <img class="rounded-full w-48" src="/image/favicon.svg" />
+  <p id="cool" class="p-3 text-center">每个认真生活的人，都值得被认真对待。</p>
 </div>
 <div class="p-4 space-y-4">
 
   <div>
-    <p class="text-lg font-bold">2020</p>
+    <p class="text-lg font-bold">2021</p>
     <div class="divide-y">
     
       <div class="grid gap-4 p-2" style="grid-template-columns: auto 9rem;">
         <span class="truncate underline">
           
-          <a href="/2020/11/24/e8db45d02017/" target="_self">
+          <a href="/2021/09/18/154541/" target="_self">
           
-          一个mongoDB的CRUD模块
+          我的博客
           </a>
         </span>
-        <div class="flex justify-center divide-x">
+        <div class="flex justify-center divide-x divide-gray-400">
           
              
-            <span class="pr-1">技术</span>
+            <span class="pr-1">new</span>
              
           
-          <span class="pl-1">2020-11-24</span>
+          <span class="pl-1">2021-09-18</span>
         </div>
       </div>
     
@@ -116,8 +114,8 @@
   </div>
   <div class="divide-x">
     <span class="pr-1">&copy;PGambler</span>
-    <span class="px-1">Powered by <a href="http://hexo.io" target="_blank" class="text-blue-400">Hexo</a></span>
-    <span class="pl-1">Theme - <a href="//github.com/Halyul/hexo-theme-mdui" target="_blank"  class="text-blue-400">PGambler</a></span>
+    <span class="px-1">Powered by <a href="//hexo.io" target="_blank" class="text-blue-400">Hexo</a></span>
+    <span class="pl-1">Theme - <a href="//github.com/PGambler/hexo-theme-heater" target="_blank"  class="text-blue-400">heater</a></span>
   </div>
 </div>
     </div>
